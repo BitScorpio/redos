@@ -47,6 +47,7 @@
       "wheel"
       "ydotool"
       "input"
+      "kvm"
     ];
     
     shell = pkgs.zsh;

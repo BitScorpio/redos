@@ -1,10 +1,4 @@
 { pkgs, inputs, config, ... }:
-let
-  unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.system;
-    config = config.nixpkgs.config;
-  };
-in
 {
   # Install emulation packages
   environment.systemPackages = with pkgs; [

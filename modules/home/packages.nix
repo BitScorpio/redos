@@ -25,9 +25,9 @@
     libdecor
 
     libxkbcommon
-    xorg.libX11
-    xorg.libXcursor
-    xorg.libXrandr
+    libx11
+    libxcursor
+    libxrandr
 
     runelite
 

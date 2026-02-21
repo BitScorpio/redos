@@ -187,7 +187,7 @@ with lib;
           border-radius: 0px;
           border: none;
           min-height: 0px;
-        }
+        }mine 
         window#waybar {
           background: rgba(0,0,0,0);
         }

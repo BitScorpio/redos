@@ -2,7 +2,6 @@
   lib,
   pkgs,
   config,
-  unstable,
   ...
 }:
 with lib;
@@ -13,7 +12,6 @@ in
   options.drivers.nvidia = {
     enable = mkEnableOption "Enable Nvidia Drivers";
   };
-
   config = mkIf cfg.enable {
     services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -43,8 +41,8 @@ in
       };
 
       nvidia = {
-        # modesetting.enable = true;
-        # nvidiaSettings = true;
+        modesetting.enable = true;
+        nvidiaSettings = true;
 
         # package = pkgs.linuxPackages.nvidiaPackages.beta;
         # powerManagement.enable = false;

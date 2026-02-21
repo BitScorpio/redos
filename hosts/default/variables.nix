@@ -23,7 +23,7 @@
   consoleKeyMap = "us";
   terminal = "kitty";
 
-  browser = "zen";
+  browser = "zen-beta";
 
   wallpaper = "gargantua.jpg";
 

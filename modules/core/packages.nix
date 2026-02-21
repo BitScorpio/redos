@@ -4,17 +4,6 @@
   config,
   ...
 }:
-let
-  unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.system;
-    config = config.nixpkgs.config;
-  };
-  wine = pkgs.wineWowPackages.waylandFull.override {
-    waylandSupport = true;
-    x11Support = true;
-    vulkanSupport = true;
-  };
-in
 {
   nixpkgs.config.permittedInsecurePackages = [
     "electron-33.4.11"
@@ -25,9 +14,9 @@ in
   };
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    xfce.thunar-volman # For removable media support
+    thunar
+    thunar-archive-plugin
+    thunar-volman # For removable media support
     file-roller # Archive backend for thunar-archive-plugin
 
     amfora # Fancy Terminal Browser For Gemini Protocol
@@ -35,15 +24,16 @@ in
     postgresql
     tuigreet
 
-    inputs.zen-browser.packages."${pkgs.system}".default
+    inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
 
     protonup-qt
 
     wireshark
 
+    input-leap
+
     devenv
 
-    wine
     winetricks
     # clipse
     lutris
@@ -68,28 +58,28 @@ in
 
     tealdeer
 
-    unstable.opencode
-    unstable.code-cursor
+    opencode
+    code-cursor
 
     gsettings-desktop-schemas
     glib
 
-    xorg.libX11
-    xorg.libXrender
-    xorg.libXtst
-    xorg.libXi
-    xorg.libxcb
+    libx11
+    libxrender
+    libxtst
+    libxi
+    libxcb
 
     remmina
 
     libGL
 
-    # inputs.yazi.packages.${pkgs.system}.yazi # TUI FileMgr
+    # inputs.yazi.packages.${pkgs.stdenv.hostPlatform.system}.yazi # TUI FileMgr
 
     gimp
 
-    unstable.lsfg-vk
-    unstable.lsfg-vk-ui
+    lsfg-vk
+    lsfg-vk-ui
 
     prismlauncher
     mangohud

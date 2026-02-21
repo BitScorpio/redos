@@ -50,7 +50,7 @@ in
 
     postgresql
 
-    nixfmt-rfc-style
+    nixfmt
 
     recaf-launcher
 
@@ -73,14 +73,13 @@ in
     chromium
     # chromedriver-op
 
-    xorg.libXxf86vm # required native library for JavaFXD
+    libxxf86vm # required native library for JavaFXD
 
     ghidra
 
     # jdk11
 
     nodejs_22
-    nodePackages.vercel
 
     digital
 

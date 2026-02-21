@@ -4,14 +4,7 @@
   inputs,
   lib,
   ...
-}:
-
-let
-  unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.system;
-    config = config.nixpkgs.config;
-  };
-in
+}: 
 {
   environment.variables = lib.mkForce {
     VLLM_TARGET_DEVICE = "cuda";
@@ -19,14 +12,13 @@ in
     LD_LIBRARY_PATH = "${pkgs.cudatoolkit}/lib:${pkgs.cudaPackages.cuda_cudart}/lib";
   };
   environment.systemPackages = with pkgs; [
-    unstable.ollama
+    pkgs.ollama
   ];
 
   # Ollama configuration
   services.ollama = {
     enable = true;
-    package = unstable.ollama;
-    acceleration = "cuda";
+    package = pkgs.ollama-cuda;
   };
   systemd.services.ollama.serviceConfig = {
     Environment = "OLLAMA_HOST=0.0.0.0";
@@ -34,7 +26,7 @@ in
 
   services.open-webui = {
     enable = true;
-    package = unstable.open-webui;
+    package = pkgs.open-webui;
     port = 8069;
   };
 

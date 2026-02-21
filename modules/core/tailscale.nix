@@ -4,25 +4,19 @@
   config,
   ...
 }:
-let
-  unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.system;
-    config = config.nixpkgs.config;
-  };
-in
 {
   age.secrets.tailscale-creds = {
     file = ../../secrets/tailscale-creds.age;
     mode = "600";
   };
   environment.systemPackages = with pkgs; [
-    unstable.tailscale
+    pkgs.tailscale
   ];
   systemd.services.tailscaled-autoconnect.enable = false;
   services.tailscale = {
     enable = true;
     authKeyFile = config.age.secrets.tailscale-creds.path;
-    package = unstable.tailscale;
+    package = pkgs.tailscale;
     useRoutingFeatures = "server";
     extraUpFlags = [
       "--reset"
