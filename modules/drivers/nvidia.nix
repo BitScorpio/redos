@@ -44,7 +44,7 @@ in
         modesetting.enable = true;
         nvidiaSettings = true;
 
-        # package = pkgs.linuxPackages.nvidiaPackages.beta;
+        package = pkgs.linuxPackages.nvidiaPackages.beta;
         # powerManagement.enable = false;
         open = true;
       };
