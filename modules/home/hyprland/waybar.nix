@@ -68,12 +68,12 @@ with lib;
         };
         "cpu" = {
           interval = 5;
-          format = " {usage}%";
+          format = " {usage}%";
           tooltip = true;
         };
         "memory" = {
           interval = 5;
-          format = " {}%";
+          format = "󰍛 {}%";
           tooltip = true;
         };
         "disk" = {
@@ -257,7 +257,7 @@ with lib;
         tooltip label {
           color: #${config.lib.stylix.colors.base08};
         }
-        #window, #pulseaudio, #cpu, #memory, #custom-gpu-usage, #custom-gpu-mem, #disk, #disk-home {
+        #window, #pulseaudio, #disk, #disk-home {
           font-weight: bold;
           margin: 4px 0px;
           margin-left: 7px;
@@ -265,6 +265,38 @@ with lib;
           background: #${config.lib.stylix.colors.base04};
           color: #${config.lib.stylix.colors.base00};
           border-radius: 24px 10px 24px 10px;
+        }
+        #cpu {
+          font-weight: bold;
+          margin: 4px 0px 4px 7px;
+          padding: 0px 8px 0px 18px;
+          background: #${config.lib.stylix.colors.base04};
+          color: #${config.lib.stylix.colors.base00};
+          border-radius: 24px 0px 0px 10px;
+        }
+        #memory {
+          font-weight: bold;
+          margin: 4px 0px;
+          padding: 0px 18px 0px 8px;
+          background: #${config.lib.stylix.colors.base04};
+          color: #${config.lib.stylix.colors.base00};
+          border-radius: 0px 10px 24px 0px;
+        }
+        #custom-gpu-usage {
+          font-weight: bold;
+          margin: 4px 0px 4px 7px;
+          padding: 0px 8px 0px 18px;
+          background: #${config.lib.stylix.colors.base04};
+          color: #${config.lib.stylix.colors.base00};
+          border-radius: 24px 0px 0px 10px;
+        }
+        #custom-gpu-mem {
+          font-weight: bold;
+          margin: 4px 0px;
+          padding: 0px 18px 0px 8px;
+          background: #${config.lib.stylix.colors.base04};
+          color: #${config.lib.stylix.colors.base00};
+          border-radius: 0px 10px 24px 0px;
         }
         #custom-startmenu {
           color: #${config.lib.stylix.colors.base0B};
