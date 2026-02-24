@@ -15,5 +15,7 @@
     (import ./task-waybar.nix { inherit pkgs; })
     (import ./recording-status.nix { inherit pkgs; })
     (import ./autoclicker.nix { inherit pkgs; })
+    (import ./waybar-gpu-usage.nix { inherit pkgs; })
+    (import ./waybar-gpu-mem.nix { inherit pkgs; })
   ];
 }

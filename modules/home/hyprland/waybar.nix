@@ -27,7 +27,10 @@ with lib;
           "pulseaudio"
           "cpu"
           "memory"
+          "custom/gpu-usage"
+          "custom/gpu-mem"
           "disk"
+          "disk#home"
         ];
         modules-right = [
           "custom/recording"
@@ -51,7 +54,7 @@ with lib;
           on-scroll-down = "hyprctl dispatch workspace e-1";
         };
         "clock" = {
-          format = '' {:L%I:%M %p}'';
+          format = " {:L%I:%M %p}";
           tooltip = true;
           tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
         };
@@ -63,19 +66,38 @@ with lib;
             "" = " 🙈 No Windows? ";
           };
         };
-        "memory" = {
-          interval = 5;
-          format = " {}%";
-          tooltip = true;
-        };
         "cpu" = {
           interval = 5;
-          format = " {usage:2}%";
+          format = " {usage}%";
+          tooltip = true;
+        };
+        "memory" = {
+          interval = 5;
+          format = " {}%";
           tooltip = true;
         };
         "disk" = {
-          format = " {free}";
+          format = "󰿟 {free}";
           tooltip = true;
+        };
+        "disk#home" = {
+          path = "/home";
+          format = "󱂵 {free}";
+          tooltip = true;
+        };
+        "custom/gpu-usage" = {
+          format = "󰢮 {}%";
+          exec = "waybar-gpu-usage";
+          interval = 5;
+          tooltip = true;
+          tooltip-format = "GPU Usage";
+        };
+        "custom/gpu-mem" = {
+          format = "󰍛 {}%";
+          exec = "waybar-gpu-mem";
+          interval = 5;
+          tooltip = true;
+          tooltip-format = "GPU Memory Usage";
         };
         "network" = {
           format-icons = [
@@ -187,7 +209,7 @@ with lib;
           border-radius: 0px;
           border: none;
           min-height: 0px;
-        }mine 
+        }
         window#waybar {
           background: rgba(0,0,0,0);
         }
@@ -235,7 +257,7 @@ with lib;
         tooltip label {
           color: #${config.lib.stylix.colors.base08};
         }
-        #window, #pulseaudio, #cpu, #memory, #disk {
+        #window, #pulseaudio, #cpu, #memory, #custom-gpu-usage, #custom-gpu-mem, #disk, #disk-home {
           font-weight: bold;
           margin: 4px 0px;
           margin-left: 7px;

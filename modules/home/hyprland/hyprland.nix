@@ -33,17 +33,19 @@ in
         Unit = {
           Description = "Waybar status bar";
           PartOf = [ "graphical-session.target" ];
-          After = [ "hyprland-session.target" ];
+          After = [ "graphical-session.target" ];
+          Wants = [ "graphical-session.target" ];
         };
 
         Service = {
+          ExecStartPre = "${pkgs.coreutils}/bin/sleep 2";
           ExecStart = "${pkgs.waybar}/bin/waybar";
           Restart = "on-failure";
           RestartSec = "5";
         };
 
         Install = {
-          WantedBy = [ "graphical-session.target" ];
+          WantedBy = [ "hyprland-session.target" ];
         };
       };
       xdg-desktop-portal-hyprland = {
@@ -54,7 +56,7 @@ in
       };
     };
   };
-  
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;

@@ -1,4 +1,9 @@
-{ username, host, config, ... }:
+{
+  username,
+  host,
+  config,
+  ...
+}:
 let
 
   inherit (import ../../../hosts/${host}/variables.nix)
@@ -15,7 +20,7 @@ in
         grace = 0;
         hide_cursor = true;
         no_fade_in = false;
-        unlock_cmd = "pkill -9 waybar && sleep 0.5 && waybar &";
+        unlock_cmd = "systemctl --user restart waybar";
       };
       background = [
         {
@@ -80,7 +85,7 @@ in
 
           # Additional settings
           check_color = "rgb(${config.lib.stylix.colors.base0B})"; # Success/green
-          fail_color = "rgb(${config.lib.stylix.colors.base08})";  # Error/red
+          fail_color = "rgb(${config.lib.stylix.colors.base08})"; # Error/red
           capslock_color = "rgb(${config.lib.stylix.colors.base09})"; # Warning/yellow
           # numlock_color = "rgb(6F98E8)"; # Color when numlock is on
           fail_text = "Authentication failed!"; # Text on auth failure

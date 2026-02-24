@@ -23,7 +23,7 @@
   consoleKeyMap = "us";
   terminal = "kitty";
 
-  browser = "zen-beta";
+  browser = "zen-beta"; 
 
   wallpaper = "gargantua.jpg";
 
@@ -85,7 +85,7 @@
   ];
 
   gpu-bypass = {
-    enable = true;
+    enable = false;
     
     gpuIds = [
       "10de:1c03"
