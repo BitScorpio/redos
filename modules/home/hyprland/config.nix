@@ -22,7 +22,7 @@ in
         "killall -q swww;sleep .5"
         "swww-daemon &"
         "killall -q swaync;sleep .5 && swaync"
-        "nm-applet --indicator"
+        "nm-applet --indicator" 
         "lxqt-policykit-agent"
         "pypr &"
         "sleep 1.5 && swww img /home/${username}/Pictures/Wallpapers/${wallpaper}"
@@ -96,7 +96,6 @@ in
 
       cursor = {
         sync_gsettings_theme = true;
-        no_hardware_cursors = 2; # change to 1 if want to disable
         enable_hyprcursor = false;
         warp_on_change_workspace = 2;
         no_warps = true;
@@ -211,11 +210,9 @@ in
         "QT_SCALE_FACTOR, 1"
         "EDITOR, nano"
         "LIBVA_DRIVER_NAME, nvidia"
-        "WLR_NO_HARDWARE_CURSORS, 1"
         "GBM_BACKEND, nvidia-drm"
         "XCURSOR_SIZE, 24"
         "XCURSOR_THEME, Bibata-Modern-Classic"
-        "XWAYLAND_NO_GLAMOR, 1"
         "_JAVA_AWT_WM_NONREPARENTING, 1"
         "__GLX_VENDOR_LIBRARY_NAME, nvidia"
         "NVD_BACKEND, direct"

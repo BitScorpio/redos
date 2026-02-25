@@ -26,7 +26,6 @@ in
     boot.kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
       "nvidia-drm.modeset=1"
-      "nvidia-drm.fbdev=0"
     ];
 
     hardware = {
@@ -45,7 +44,7 @@ in
         nvidiaSettings = true;
 
         package = pkgs.linuxPackages.nvidiaPackages.beta;
-        # powerManagement.enable = false;
+        powerManagement.enable = true;
         open = true;
       };
     };
