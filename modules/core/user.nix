@@ -19,7 +19,7 @@
         host
         profile
         ;
-    }; 
+    };
     users.${username} = {
       gtk = {
         enable = true;
@@ -38,7 +38,7 @@
     isNormalUser = true;
     extraGroups = [
       "adbusers"
-      "wiresharksudo nixos-rebuild switch"
+      "wireshark"
       "docker"
       "libvirtd"
       "lp"
@@ -49,10 +49,13 @@
       "input"
       "kvm"
     ];
-    
+
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
   };
   nix.settings.allowed-users = [ "${username}" ];
-  nix.settings.trusted-users = [ "${username}" "root" ];
+  nix.settings.trusted-users = [
+    "${username}"
+    "root"
+  ];
 }

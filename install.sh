@@ -1,7 +1,18 @@
-  echo "-----"
+#!/usr/bin/env bash
+set -e
+
+if [ -f /etc/os-release ]; then
+  . /etc/os-release
+  if [ "$ID" = "nixos" ]; then
+    echo "NixOS detected, proceeding with installation."
+    echo "-----"
+  else
+    echo "This is not NixOS or the distribution information is not available."
+    exit 1
+  fi
 else
   echo "This is not NixOS or the distribution information is not available."
-  exit
+  exit 1
 fi
 
 if command -v git &> /dev/null; then
@@ -10,7 +21,7 @@ if command -v git &> /dev/null; then
 else
   echo "Git is not installed. Please install Git and try again."
   echo "Example: nix-shell -p git"
-  exit
+  exit 1
 fi
 
 echo "Default options are in brackets []"

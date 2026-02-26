@@ -7,6 +7,7 @@
 {
   nixpkgs.config.permittedInsecurePackages = [
     "electron-33.4.11"
+    "gradle-7.6.6"
   ];
   programs = {
     xwayland.enable = true;
@@ -22,7 +23,6 @@
     amfora # Fancy Terminal Browser For Gemini Protocol
     pavucontrol # For Editing Audio Levels & Devices
     postgresql
-    tuigreet
 
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
 
@@ -52,10 +52,6 @@
 
     cliphist
 
-    cups
-    cups-filters
-    system-config-printer
-
     tealdeer
 
     opencode
@@ -82,9 +78,5 @@
     lsfg-vk-ui
 
     prismlauncher
-    mangohud
-
-    #hypr tools
-    hyprpicker
   ];
 }

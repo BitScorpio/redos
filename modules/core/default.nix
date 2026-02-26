@@ -9,7 +9,7 @@
     ./hardware.nix
     ./greetd.nix
     ./starfish.nix
-    ./services.nix
+    ./services
     ./networking.nix
     ./arr-proxy.nix
     ./user.nix
@@ -26,10 +26,7 @@
     inputs.stylix.nixosModules.stylix
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "gradle-7.6.6"
-  ];
-  # TODO remove these once we add our new ones!
+  # Xfce on X11 for TTY-based X11 apps that don't run on Wayland
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;
@@ -39,7 +36,6 @@
     '';
 
   };
-
 
   # services.displayManager.sddm.enable = true;
   # services.desktopManager.plasma6.enable = true;

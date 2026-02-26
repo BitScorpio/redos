@@ -3,7 +3,11 @@
   imports = [
     ./btop.nix
     ./cava.nix
+    ./amfora.nix
+    ./swappy.nix
     ./dev.nix
+    ./gaming.nix
+    ./java.nix
     ./git.nix
     ./htop.nix
     ./kitty.nix
@@ -17,7 +21,7 @@
 
     ./rofi
     ./hyprland
-    
+
     # ./yazi
     ./fastfetch
     ./wlogout

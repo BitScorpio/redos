@@ -4,12 +4,12 @@
   inputs,
   lib,
   ...
-}: 
+}:
 {
-  environment.variables = lib.mkForce {
+  environment.variables = {
     VLLM_TARGET_DEVICE = "cuda";
     CUDA_HOME = "${pkgs.cudaPackages.cuda_nvcc}";
-    LD_LIBRARY_PATH = "${pkgs.cudatoolkit}/lib:${pkgs.cudaPackages.cuda_cudart}/lib";
+    LD_LIBRARY_PATH = lib.mkForce "/etc/sane-libs:${pkgs.cudatoolkit}/lib:${pkgs.cudaPackages.cuda_cudart}/lib";
   };
   environment.systemPackages = with pkgs; [
     pkgs.ollama

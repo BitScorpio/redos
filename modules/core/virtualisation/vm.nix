@@ -26,10 +26,9 @@
       "vfio_iommu_type1"
       "kvmfr"
     ];
-    
+
     extraModulePackages = [ config.boot.kernelPackages.kvmfr ];
   };
-
 
   boot.extraModprobeConfig = ''
     options kvmfr static_size_mb=32
@@ -54,5 +53,5 @@
     ]
   '';
 
-  systemd.tmpfiles.rules = [ "f /dev/shm/looking-glass 0660 ${username} qemu-libvertd -" ];
+  systemd.tmpfiles.rules = [ "f /dev/shm/looking-glass 0660 ${username} qemu-libvirtd -" ];
 }

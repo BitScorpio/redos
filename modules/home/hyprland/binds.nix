@@ -19,7 +19,7 @@ in
       "$modifier,D,exec,discord"
       "$modifier,O,exec,obs"
       "$modifier,C,exec,hyprpicker -a"
-      "$modifier,G,exec,gimp"
+      "$modifier,G,submap,cursor"
       "$modifier,T,exec,pypr toggle term"
       # "$modifier,V,exec,${terminal} --class clipse -e 'clipse'"
       "$modifier SHIFT,F8,exec,autoclicker"
@@ -96,12 +96,6 @@ in
       ",XF86AudioPrev, exec, playerctl previous"
       ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
       ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
-
-      # Mouse keys
-      "$modifier CONTROL, h, exec, ydotool mousemove -x -42 -y 0"
-      "$modifier CONTROL, l, exec, ydotool mousemove -x 42 -y 0"
-      "$modifier CONTROL, k, exec, ydotool mousemove -x 0 -y -36"
-      "$modifier CONTROL, j, exec, ydotool mousemove -x 0 -y 36"
     ];
 
     bindm = [
@@ -110,4 +104,38 @@ in
       "$modifier,mouse:273,resizewindow"
     ];
   };
+
+  wayland.windowManager.hyprland.extraConfig = ''
+    submap = cursor
+
+    # Movement (repeats when held)
+    binde = , h, exec, wlrctl pointer move -20 0
+    binde = , l, exec, wlrctl pointer move 20 0
+    binde = , k, exec, wlrctl pointer move 0 -20
+    binde = , j, exec, wlrctl pointer move 0 20
+
+    # Specifics
+    bind = , z, exec, if [ -f /tmp/cursor_dir ]; then wlrctl pointer move 20 0 && rm /tmp/cursor_dir; else wlrctl pointer move -20 0 && touch /tmp/cursor_dir; fi
+
+    # Faster movement with shift
+    binde = SHIFT, h, exec, wlrctl pointer move -80 0
+    binde = SHIFT, l, exec, wlrctl pointer move 80 0
+    binde = SHIFT, k, exec, wlrctl pointer move 0 -80
+    binde = SHIFT, j, exec, wlrctl pointer move 0 80
+
+    # Clicks
+    bind = , s, exec, wlrctl pointer click left
+    bind = , a, exec, wlrctl pointer click left && sleep 0.1 && wlrctl pointer click left
+    bind = , d, exec, wlrctl pointer click middle
+    bind = , f, exec, wlrctl pointer click right
+
+    # Scroll
+    binde = , e, exec, wlrctl pointer scroll -10 0
+    binde = , r, exec, wlrctl pointer scroll 10 0
+
+    # Exit cursor mode
+    bind = , escape, submap, reset
+
+    submap = reset
+  '';
 }

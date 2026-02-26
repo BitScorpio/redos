@@ -18,7 +18,9 @@
     xone.enable = true;
   };
 
-  # 6.18 Linux kernel patch for xone driver.
+  # MAINTENANCE: Kernel compatibility patches for xpad-noone, xpadneo, and v4l2loopback.
+  # These work around API changes in Linux 6.18 (ida_simple_get -> ida_alloc).
+  # Check if still needed after kernel or upstream package updates.
   nixpkgs.overlays = [
     (final: prev: {
       linuxPackages_latest = prev.linuxPackages_latest.extend (
